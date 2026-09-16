@@ -55,6 +55,20 @@ public class GewinnView extends JFrame {
         rundenLabel.setText("Rundenergebnis: " + ergebnis);
         computerFeld.setText(String.valueOf(computer));
         setzeRundenStatus(true);
+        if (gesamt >= 100) {
+            gesamtLabel.setBackground(Color.GREEN);
+        } else if (gesamt <= 0) {
+            gesamtLabel.setBackground(Color.RED);
+        } else {
+            gesamtLabel.setBackground(Color.WHITE);
+        }
+        if (ergebnis > 0) {
+            rundenLabel.setBackground(Color.GREEN);
+        } else if (ergebnis < 0) {
+            rundenLabel.setBackground(Color.RED);
+        } else {
+            rundenLabel.setBackground(Color.WHITE);
+        }
     }
     public void leereRunde() {
         spielerFeld.setText("");
