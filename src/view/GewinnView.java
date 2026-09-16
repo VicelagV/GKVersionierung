@@ -35,6 +35,7 @@ public class GewinnView extends JFrame {
         eingabePanel.add(new JLabel("Computerzahl:"));
         eingabePanel.add(computerFeld);
         weiterButton = new JButton("Noch einmal!");
+        setzeRundenStatus(false);
         hauptPanel.add(ergebnisPanel, BorderLayout.NORTH);
         hauptPanel.add(eingabePanel, BorderLayout.CENTER);
         hauptPanel.add(weiterButton, BorderLayout.SOUTH);
@@ -53,8 +54,7 @@ public class GewinnView extends JFrame {
         gesamtLabel.setText("Gesamtpunkte: " + gesamt);
         rundenLabel.setText("Rundenergebnis: " + ergebnis);
         computerFeld.setText(String.valueOf(computer));
-        gesamtLabel.setBackground(Color.WHITE);
-        rundenLabel.setBackground(Color.WHITE);
+        setzeRundenStatus(true);
     }
     public void leereRunde() {
         spielerFeld.setText("");
@@ -62,7 +62,12 @@ public class GewinnView extends JFrame {
         rundenLabel.setText("Rundenergebnis: ");
         gesamtLabel.setBackground(Color.WHITE);
         rundenLabel.setBackground(Color.WHITE);
+        setzeRundenStatus(false);
         spielerFeld.requestFocusInWindow();
+    }
+    private void setzeRundenStatus(boolean gespielt) {
+        spielerFeld.setEditable(!gespielt);
+        weiterButton.setEnabled(gespielt);
     }
     public void zeigeMeldung(String text) {
         JOptionPane.showMessageDialog(this, text);
